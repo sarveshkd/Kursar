@@ -155,9 +155,8 @@ function top(drafts: DraftImprovement[], limit: number): Improvement[] {
   const sorted = [...drafts].sort((a, b) => b.priority - a.priority)
   const picked: Improvement[] = []
   for (const draft of sorted) {
-    const key = `${draft.excerpt}::${draft.issue}`
-    if (seen.has(key)) continue
-    seen.add(key)
+    if (seen.has(draft.excerpt)) continue
+    seen.add(draft.excerpt)
     picked.push({ excerpt: draft.excerpt, issue: draft.issue, change: draft.change })
     if (picked.length >= limit) break
   }
@@ -855,7 +854,9 @@ export function scoreWithRubric(resume: ParsedResume): ScoreReport {
   const sections = [summary, experience, skills, education, ats]
   const lowest = [...sections].sort((a, b) => a.score - b.score)[0]
   const highest = [...sections].sort((a, b) => b.score - a.score)[0]
-  const overallDrafts = sections.flatMap((section) => section.drafts)
+  const overallDrafts = sections.flatMap((section) =>
+    [...section.drafts].sort((a, b) => b.priority - a.priority).slice(0, 1),
+  )
 
   const overall: PartScore = {
     id: "overall",
