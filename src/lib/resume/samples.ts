@@ -8,7 +8,7 @@ export interface SampleResume {
   text: string
 }
 
-const WEAK_TEXT = `ALEX RIVERA
+const WEAK_TEXT = `JOHN DOE
 Hard worker and team player
 
 Objective
@@ -27,8 +27,8 @@ Education
 College
 `
 
-const STRONG_TEXT = `Alex Rivera
-alex.rivera@email.com | (415) 555-0148 | San Francisco, CA | linkedin.com/in/alexrivera
+const STRONG_TEXT = `John Doe
+john.doe@email.com | (415) 555-0148 | San Francisco, CA | linkedin.com/in/johndoe
 
 Summary
 Customer support lead with 6 years turning high-volume inboxes into measurable retention. Cut repeat contacts 18% at Northwind by rewriting the returns macro set and coaching a team of 11.
@@ -55,16 +55,16 @@ B.A. Communication Studies, San Jose State University, 2018
 export const SAMPLES: Record<SampleId, SampleResume> = {
   weak: {
     id: "weak",
-    filename: "alex-rivera-weak.txt",
-    title: "Weak draft",
-    detail: "Vague lines, traits listed as skills, no numbers.",
+    filename: "john-doe-weak.txt",
+    title: "Example: weak resume",
+    detail: "John Doe. Traits and vague lines, no numbers.",
     text: WEAK_TEXT.trim(),
   },
   strong: {
     id: "strong",
-    filename: "alex-rivera-strong.txt",
-    title: "Stronger draft",
-    detail: "The same career, rewritten with scope and results.",
+    filename: "john-doe-strong.txt",
+    title: "Example: stronger resume",
+    detail: "The same John Doe resume, rewritten with results.",
     text: STRONG_TEXT.trim(),
   },
 }

@@ -15,7 +15,7 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   title: "Kursar — Resume desk",
-  description: "Score a resume section by section and see the exact lines to rewrite. No API key required.",
+  description: "Upload a resume and see a score for each section, with the exact lines to rewrite.",
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

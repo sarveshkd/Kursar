@@ -37,7 +37,7 @@ export function ReviewDesk() {
       await receive(response)
     } catch {
       setReport(null)
-      setError("The review could not be completed. Start the dev server and try the file again.")
+      setError("The review could not be completed. Check your connection and try again.")
     } finally {
       setLoading(false)
     }
@@ -67,16 +67,31 @@ export function ReviewDesk() {
   return (
     <div className="min-h-full bg-[#efe8d8] text-[#1a1714]">
       <header className="border-b border-[#1a1714] bg-[#f6f1e6]">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 sm:flex-row sm:items-end sm:justify-between sm:px-6">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5 sm:px-6">
           <div>
-            <p className="text-[11px] font-medium tracking-[0.28em] text-[#5c564c] uppercase">Resume desk</p>
-            <h1 className="font-display text-5xl leading-none tracking-tight sm:text-6xl">Kursar</h1>
+            <p className="text-[11px] font-medium tracking-[0.28em] text-[#5c564c] uppercase">Resume review</p>
+            <h1 className="font-display text-4xl leading-none tracking-tight sm:text-5xl">Kursar</h1>
           </div>
-          <p className="max-w-sm text-sm leading-6 text-[#3f3a33]">
-            A line-level read of the resume you upload. Scores quote the weak spot, then say what to change. No API key required.
-          </p>
+          <a
+            href="#how-to-use"
+            className="text-sm text-[#234237] underline decoration-[#234237]/40 underline-offset-4 hover:decoration-[#234237]"
+          >
+            How to use
+          </a>
         </div>
       </header>
+
+      <section id="how-to-use" className="border-b border-[#1a1714] bg-[#f7f3ea]">
+        <div className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 md:grid-cols-3">
+          {STEPS.map((step) => (
+            <div key={step.number}>
+              <p className="font-display text-3xl text-[#234237]">{step.number}</p>
+              <h2 className="mt-2 text-base font-medium text-[#1a1714]">{step.title}</h2>
+              <p className="mt-2 text-sm leading-6 text-[#3f3a33]">{step.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {error ? (
         <div className="mx-auto max-w-6xl px-4 pt-4 sm:px-6">
@@ -89,7 +104,10 @@ export function ReviewDesk() {
       <main className="mx-auto grid max-w-6xl gap-6 px-4 py-6 sm:px-6 lg:grid-cols-[320px_minmax(0,1fr)]">
         <div className="order-1 space-y-4 lg:col-start-1 lg:row-start-1">
           <section className="border border-[#1a1714] bg-[#f7f3ea] p-4">
-            <h2 className="text-sm font-medium">Put a resume on the desk</h2>
+            <h2 className="text-sm font-medium">Score your resume</h2>
+            <p className="mt-1 text-sm leading-6 text-[#5c564c]">
+              PDF, Word (.docx), or plain text. Nothing you upload is saved.
+            </p>
             <label
               className={`mt-3 flex min-h-36 cursor-pointer flex-col items-center justify-center border border-dashed px-4 py-6 text-center ${
                 dragOver ? "border-[#234237] bg-[#e7f0ea]" : "border-[#234237] bg-[#fbf8f2]"
@@ -119,7 +137,11 @@ export function ReviewDesk() {
                 }}
               />
             </label>
-            <div className="mt-4 grid gap-2">
+            <p className="mt-4 text-xs tracking-[0.16em] text-[#5c564c] uppercase">Or open an example</p>
+            <p className="mt-1 text-sm leading-6 text-[#5c564c]">
+              Both are John Doe. One is a weak resume. The other is a stronger rewrite of the same career.
+            </p>
+            <div className="mt-2 grid gap-2">
               {(Object.keys(SAMPLES) as SampleId[]).map((id) => (
                 <Button
                   key={id}
@@ -166,15 +188,48 @@ export function ReviewDesk() {
 
         <div className="order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2">
           <ScoreSheet report={loading ? null : report} loading={loading} onSample={scoreSample} />
-          <p className="mt-4 text-xs leading-5 text-[#5c564c]">
-            80–100 strong · 65–79 solid · 45–64 uneven · 0–44 needs work. Scanned PDFs and legacy .doc files are rejected.
-            The rubric does not see a job posting, so it cannot judge fit for one role.
-          </p>
         </div>
       </main>
+
+      <footer className="border-t border-[#1a1714] bg-[#f6f1e6]">
+        <div className="mx-auto grid max-w-6xl gap-6 px-4 py-8 text-sm leading-6 text-[#3f3a33] sm:px-6 md:grid-cols-3">
+          <div>
+            <p className="font-medium text-[#1a1714]">How a score reads</p>
+            <p className="mt-2">80–100 strong. 65–79 solid. 45–64 uneven. 0–44 needs work.</p>
+          </div>
+          <div>
+            <p className="font-medium text-[#1a1714]">What you can upload</p>
+            <p className="mt-2">PDF, DOCX, or plain text, up to 5 MB. A photo or scan of a resume needs a text-based PDF.</p>
+          </div>
+          <div>
+            <p className="font-medium text-[#1a1714]">What Kursar looks at</p>
+            <p className="mt-2">
+              Summary, experience, skills, education, and formatting. It quotes lines from your file. It does not compare you to one job posting.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
+
+const STEPS = [
+  {
+    number: "01",
+    title: "Add your resume",
+    body: "Drop a PDF, DOCX, or text file in the box, or paste the text. Kursar reads the words in the file.",
+  },
+  {
+    number: "02",
+    title: "Or try an example first",
+    body: "The John Doe examples are sample resumes, not yours. Open the weak one, then the stronger rewrite, to see how the score changes.",
+  },
+  {
+    number: "03",
+    title: "Read each section",
+    body: "Start with the overall score. Each part quotes a line from the resume and says what to change. The extract shows exactly what was read.",
+  },
+]
 
 function clientFileError(file: File): string | null {
   if (file.size === 0) return UPLOAD_MESSAGES.empty

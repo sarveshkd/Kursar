@@ -13,7 +13,7 @@ npm run dev
 
 Open [http://localhost:4317](http://localhost:4317).
 
-To try it before you have a file, use **Weak draft** and **Stronger draft**. They are the same career: one written in labels, one written with scope and results.
+To try it before you have a file, open the John Doe examples. One is a weak resume and one is a stronger rewrite of the same career.
 
 You can also paste plain text, or upload `.pdf`, `.docx`, `.txt`, or `.md`.
 

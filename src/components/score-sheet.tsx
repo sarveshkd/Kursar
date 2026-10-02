@@ -34,9 +34,9 @@ export function ScoreSheet({
     return (
       <section className="sheet-shadow border border-[#1a1714] bg-[#f7f3ea] p-6 sm:p-8">
         <p className="text-[11px] tracking-[0.22em] text-[#5c564c] uppercase">Score sheet</p>
-        <h2 className="font-display mt-3 text-4xl leading-tight text-[#1a1714]">Nothing on the desk yet.</h2>
+        <h2 className="font-display mt-3 text-4xl leading-tight text-[#1a1714]">Your score will show here.</h2>
         <p className="mt-3 max-w-lg text-sm leading-6 text-[#3f3a33]">
-          Drop a file or score a built-in draft. The sheet stays blank until there is a resume to quote.
+          Upload a resume, or open a John Doe example, and the score will appear here.
         </p>
         <dl className="mt-8 divide-y divide-[#d9d0c0] border-y border-[#1a1714]">
           {BLANK_ROWS.map((row) => (
@@ -78,9 +78,6 @@ export function ScoreSheet({
           </div>
         </div>
         <p className="mt-4 max-w-2xl text-sm leading-6 text-[#3f3a33]">{overall?.reason}</p>
-        <p className="mt-3 text-xs tracking-wide text-[#5c564c] uppercase">
-          {report.engine === "rubric" ? "Local rubric · no API key" : "OpenAI scorer"}
-        </p>
         {report.note ? <p className="mt-2 text-sm text-[#8a5a12]">{report.note}</p> : null}
         {otherSample ? (
           <button
@@ -88,7 +85,7 @@ export function ScoreSheet({
             className="mt-4 text-sm text-[#234237] underline decoration-[#234237]/40 underline-offset-4 hover:decoration-[#234237]"
             onClick={() => onSample(otherSample)}
           >
-            {otherSample === "strong" ? "Compare the stronger draft" : "Compare the weak draft"}
+            {otherSample === "strong" ? "Compare John Doe’s stronger example" : "Compare John Doe’s weak example"}
           </button>
         ) : null}
       </div>
@@ -149,7 +146,7 @@ function PartBlock({ part }: { part: PartScore }) {
 }
 
 function fileTypeLabel(fileType: ScoreReport["extracted"]["fileType"]): string {
-  if (fileType === "sample") return "built-in sample"
+  if (fileType === "sample") return "example resume"
   if (fileType === "pdf") return "PDF"
   if (fileType === "docx") return "DOCX"
   return "plain text"

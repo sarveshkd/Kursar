@@ -65,7 +65,7 @@ describe("rubric scorer", () => {
     expect(
       part(weak, "summary").improvements.some((item) => /Hard worker and team player|results-driven|Seeking a challenging/i.test(item.excerpt)),
     ).toBe(true)
-    expect(part(weak, "ats").improvements.some((item) => item.excerpt === "ALEX RIVERA")).toBe(true)
+    expect(part(weak, "ats").improvements.some((item) => item.excerpt === "JOHN DOE")).toBe(true)
   })
 
   it("flags a skill the stronger draft lists but never uses", () => {

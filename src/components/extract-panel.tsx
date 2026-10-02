@@ -6,7 +6,7 @@ export function ExtractPanel({ report }: { report: ScoreReport | null }) {
       <section className="border border-[#1a1714] bg-[#f7f3ea] p-4">
         <h2 className="text-sm font-medium text-[#1a1714]">Extracted text</h2>
         <p className="mt-2 text-sm leading-6 text-[#5c564c]">
-          After a score, the text pulled from the file shows up here. If a heading or a bullet is missing, the parse missed it.
+          After a score, this is the text Kursar read. If a heading or a bullet is missing here, it was not in the file.
         </p>
       </section>
     )
