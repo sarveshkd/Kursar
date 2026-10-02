@@ -69,7 +69,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             async
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient()}`}
             crossOrigin="anonymous"
-            strategy="afterInteractive"
+            strategy="beforeInteractive"
           />
         ) : null}
         {analyticsId() ? (
