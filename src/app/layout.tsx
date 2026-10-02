@@ -62,16 +62,17 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`${outfit.variable} ${fraunces.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full bg-[#efe8d8] text-[#1a1714]" suppressHydrationWarning>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <head>
         {adsenseClient() ? (
-          <Script
+          <script
             async
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient()}`}
             crossOrigin="anonymous"
-            strategy="beforeInteractive"
           />
         ) : null}
+      </head>
+      <body className="min-h-full bg-[#efe8d8] text-[#1a1714]" suppressHydrationWarning>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         {analyticsId() ? (
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId()}`} strategy="afterInteractive" />
