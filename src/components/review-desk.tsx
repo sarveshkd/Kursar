@@ -4,6 +4,7 @@ import { useRef, useState } from "react"
 import { ClipboardPaste, FileCheck, FileText, FileUp, ListChecks, Upload } from "lucide-react"
 import { ExtractPanel } from "@/components/extract-panel"
 import { ScoreSheet } from "@/components/score-sheet"
+import { SearchGuide } from "@/components/search-guide"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { Button } from "@/components/ui/button"
@@ -202,6 +203,7 @@ export function ReviewDesk() {
         </div>
       </main>
 
+      <SearchGuide />
       <SiteFooter />
     </div>
   )

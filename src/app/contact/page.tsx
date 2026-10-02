@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Contact Kursar about Resume Scorer, a free resume checker. Read the portfolio, reach out on LinkedIn, or send a note by email.",
+  alternates: { canonical: "/contact" },
 }
 
 export default function ContactPage() {

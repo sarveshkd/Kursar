@@ -7,6 +7,7 @@ import { CONTACT_EMAIL } from "@/lib/contact"
 export const metadata: Metadata = {
   title: "Privacy",
   description: "How Kursar Resume Scorer handles an uploaded resume, email notes, and advertising cookies.",
+  alternates: { canonical: "/privacy" },
 }
 
 export default function PrivacyPage() {
