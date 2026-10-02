@@ -3,6 +3,7 @@ import type { ReactNode } from "react"
 import { Fraunces, Outfit } from "next/font/google"
 import Script from "next/script"
 import { adsenseClient } from "@/lib/adsense"
+import { analyticsId } from "@/lib/analytics"
 import { SITE_URL } from "@/lib/contact"
 import "./globals.css"
 
@@ -70,6 +71,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             crossOrigin="anonymous"
             strategy="afterInteractive"
           />
+        ) : null}
+        {analyticsId() ? (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId()}`} strategy="afterInteractive" />
+            <Script id="ga4" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${analyticsId()}');`}
+            </Script>
+          </>
         ) : null}
         {children}
       </body>

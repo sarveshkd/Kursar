@@ -46,6 +46,15 @@ AdSense puts ads on the site and pays you. It is a different product from Google
 3. After approval, AdSense shows a publisher id that looks like `ca-pub-` followed by digits.
 4. In Vercel, set `NEXT_PUBLIC_ADSENSE_CLIENT` to that id and redeploy. The site then loads the AdSense script and serves `/ads.txt`. Until that variable is set, no ad script is included.
 
+Traffic, meaning who visited and from where, is [Google Analytics](https://analytics.google.com/):
+
+1. Create an account and a property for Kursar. The platform is Web, and the URL is `https://kursar.vercel.app`.
+2. Open Admin → Data streams → the web stream, and copy the Measurement ID. It starts with `G-`.
+3. In Vercel, set `NEXT_PUBLIC_GA_MEASUREMENT_ID` to that id and redeploy.
+4. In Analytics, open Reports → Realtime, then visit the site in another tab. Your visit should show up within a minute.
+
+Search Console only shows people who arrived from Google Search, and that report lags by a day or two. Analytics counts every visit: search, a social video, an ad, or someone typing the address. In Analytics, Reports → Acquisition shows those sources. The resume file itself is not sent to Analytics.
+
 To try it before you have a file, open the John Doe examples. One is a weak resume and one is a stronger rewrite of the same career.
 
 You can also paste plain text, or upload `.pdf`, `.docx`, `.txt`, or `.md`.

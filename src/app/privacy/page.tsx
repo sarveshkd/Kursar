@@ -24,7 +24,7 @@ export default function PrivacyPage() {
             A note on the contact page opens your own email app. It is sent only if you press send there. That message goes to {CONTACT_EMAIL}.
           </p>
           <p>
-            When advertising is turned on, Google AdSense may place a cookie to choose and measure ads. Google describes that in its{" "}
+            When traffic measurement is turned on, Google Analytics records the page, the rough location, and how someone arrived. The resume text is not sent there. Measurement stays off until a measurement id is configured. When advertising is turned on, Google AdSense may place a cookie to choose and measure ads. Google describes that in its{" "}
             <a
               href="https://policies.google.com/technologies/ads"
               className="text-[#234237] underline decoration-[#234237]/40 underline-offset-4"
