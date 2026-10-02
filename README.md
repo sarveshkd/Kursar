@@ -28,6 +28,24 @@ When you want a real domain later, register one at cost (often about $10 a year 
 
 Leave `SCORER_PROVIDER` unset in Vercel. The site then keeps using the built-in rubric and does not need an API key.
 
+## Search and AdSense
+
+The live address is [https://kursar.vercel.app](https://kursar.vercel.app). Search engines can read `/sitemap.xml` and `/robots.txt`. A privacy page is at `/privacy`.
+
+Search, the free way to be listed:
+
+1. Open [Google Search Console](https://search.google.com/search-console) and add the property `https://kursar.vercel.app`.
+2. Choose the HTML tag method. Copy only the `content` value from the meta tag.
+3. In the Vercel project, add an environment variable named `GOOGLE_SITE_VERIFICATION` with that value, for Production, then redeploy.
+4. Back in Search Console, click Verify, then submit `https://kursar.vercel.app/sitemap.xml`.
+
+AdSense puts ads on the site and pays you. It is a different product from Google Ads, which is where you pay Google to send visitors.
+
+1. Open [Google AdSense](https://www.google.com/adsense/) with the same Google account and add `kursar.vercel.app`.
+2. Google reviews the site. The privacy page and the contact page are there for that review. Do not click your own ads once they appear.
+3. After approval, AdSense shows a publisher id that looks like `ca-pub-` followed by digits.
+4. In Vercel, set `NEXT_PUBLIC_ADSENSE_CLIENT` to that id and redeploy. The site then loads the AdSense script and serves `/ads.txt`. Until that variable is set, no ad script is included.
+
 To try it before you have a file, open the John Doe examples. One is a weak resume and one is a stronger rewrite of the same career.
 
 You can also paste plain text, or upload `.pdf`, `.docx`, `.txt`, or `.md`.

@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import type { ReactNode } from "react"
 import { Fraunces, Outfit } from "next/font/google"
+import Script from "next/script"
+import { adsenseClient } from "@/lib/adsense"
 import { SITE_URL } from "@/lib/contact"
 import "./globals.css"
 
@@ -30,6 +32,26 @@ export const metadata: Metadata = {
     siteName: "Kursar",
     type: "website",
   },
+  verification: googleSiteVerification() ? { google: googleSiteVerification()! } : undefined,
+}
+
+function googleSiteVerification(): string | null {
+  const value = process.env.GOOGLE_SITE_VERIFICATION?.trim()
+  if (!value || !/^[A-Za-z0-9_-]{8,}$/.test(value)) return null
+  return value
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Resume Scorer",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  url: SITE_URL,
+  description:
+    "Free resume checker. Upload a PDF, DOCX, or text resume and get section scores with the lines to rewrite.",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  provider: { "@type": "Organization", name: "Kursar", url: SITE_URL },
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -40,6 +62,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       suppressHydrationWarning
     >
       <body className="min-h-full bg-[#efe8d8] text-[#1a1714]" suppressHydrationWarning>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        {adsenseClient() ? (
+          <Script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient()}`}
+            crossOrigin="anonymous"
+            strategy="afterInteractive"
+          />
+        ) : null}
         {children}
       </body>
     </html>

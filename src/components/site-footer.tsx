@@ -32,10 +32,15 @@ export function SiteFooter() {
             </p>
           </div>
         </div>
-        <Link href="/contact" className="inline-flex items-center gap-2 text-sm text-[#234237]">
-          <Mail className="size-4" aria-hidden="true" />
-          {CONTACT_EMAIL}
-        </Link>
+        <div className="flex flex-col gap-2 text-sm">
+          <Link href="/contact" className="inline-flex items-center gap-2 text-[#234237]">
+            <Mail className="size-4" aria-hidden="true" />
+            {CONTACT_EMAIL}
+          </Link>
+          <Link href="/privacy" className="text-[#234237] underline decoration-[#234237]/40 underline-offset-4">
+            Privacy
+          </Link>
+        </div>
       </div>
     </footer>
   )
