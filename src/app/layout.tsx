@@ -14,8 +14,8 @@ const fraunces = Fraunces({
 })
 
 export const metadata: Metadata = {
-  title: "Kursar — Resume desk",
-  description: "Upload a resume and see a score for each section, with the exact lines to rewrite.",
+  title: "Resume Scorer · Kursar",
+  description: "Resume Scorer is a Kursar product. Upload a resume and see a score for each section, with the exact lines to rewrite.",
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

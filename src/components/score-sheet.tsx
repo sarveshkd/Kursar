@@ -19,7 +19,7 @@ export function ScoreSheet({
   if (loading) {
     return (
       <section className="sheet-shadow border border-[#1a1714] bg-[#f7f3ea] p-6 sm:p-8" aria-busy="true">
-        <p className="text-[11px] tracking-[0.22em] text-[#5c564c] uppercase">Score sheet</p>
+        <p className="text-[11px] tracking-[0.22em] text-[#5c564c] uppercase">Resume Scorer</p>
         <p className="font-display mt-3 text-4xl text-[#1a1714]">Reading the resume…</p>
         <p className="mt-3 max-w-md text-sm leading-6 text-[#3f3a33]">
           Extracting the text, then scoring the summary, experience, skills, education, and ATS shape.
@@ -33,7 +33,7 @@ export function ScoreSheet({
   if (!report) {
     return (
       <section className="sheet-shadow border border-[#1a1714] bg-[#f7f3ea] p-6 sm:p-8">
-        <p className="text-[11px] tracking-[0.22em] text-[#5c564c] uppercase">Score sheet</p>
+        <p className="text-[11px] tracking-[0.22em] text-[#5c564c] uppercase">Resume Scorer</p>
         <h2 className="font-display mt-3 text-4xl leading-tight text-[#1a1714]">Your score will show here.</h2>
         <p className="mt-3 max-w-lg text-sm leading-6 text-[#3f3a33]">
           Upload a resume, or open a John Doe example, and the score will appear here.

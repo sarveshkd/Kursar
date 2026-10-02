@@ -1,6 +1,6 @@
 # Kursar
 
-Kursar is a resume desk. Upload a PDF, DOCX, or plain-text resume and it scores the page section by section, quoting the lines that are holding the score down.
+Kursar is the company. Resume Scorer is the product in this app. Upload a PDF, DOCX, or plain-text resume and it scores the page section by section, quoting the lines that are holding the score down.
 
 The default scorer is a local rubric. It does not call an API and does not need a key.
 

@@ -67,10 +67,10 @@ export function ReviewDesk() {
   return (
     <div className="min-h-full bg-[#efe8d8] text-[#1a1714]">
       <header className="border-b border-[#1a1714] bg-[#f6f1e6]">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5 sm:px-6">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-5 sm:px-6">
           <div>
-            <p className="text-[11px] font-medium tracking-[0.28em] text-[#5c564c] uppercase">Resume review</p>
-            <h1 className="font-display text-4xl leading-none tracking-tight sm:text-5xl">Kursar</h1>
+            <p className="font-display text-4xl leading-none tracking-tight sm:text-5xl">Kursar</p>
+            <p className="mt-1 text-sm text-[#5c564c]">Resume Scorer</p>
           </div>
           <a
             href="#how-to-use"
@@ -83,6 +83,10 @@ export function ReviewDesk() {
 
       <section id="how-to-use" className="border-b border-[#1a1714] bg-[#f7f3ea]">
         <div className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 md:grid-cols-3">
+          <div className="md:col-span-3">
+            <p className="text-[11px] font-medium tracking-[0.22em] text-[#5c564c] uppercase">A Kursar product</p>
+            <h1 className="font-display mt-2 text-4xl leading-none tracking-tight text-[#1a1714]">Resume Scorer</h1>
+          </div>
           {STEPS.map((step) => (
             <div key={step.number}>
               <p className="font-display text-3xl text-[#234237]">{step.number}</p>
@@ -202,11 +206,15 @@ export function ReviewDesk() {
             <p className="mt-2">PDF, DOCX, or plain text, up to 5 MB. A photo or scan of a resume needs a text-based PDF.</p>
           </div>
           <div>
-            <p className="font-medium text-[#1a1714]">What Kursar looks at</p>
+            <p className="font-medium text-[#1a1714]">What Resume Scorer looks at</p>
             <p className="mt-2">
               Summary, experience, skills, education, and formatting. It quotes lines from your file. It does not compare you to one job posting.
             </p>
           </div>
+        </div>
+        <div className="mx-auto flex max-w-6xl flex-col gap-1 border-t border-[#d9d0c0] px-4 py-5 sm:px-6">
+          <p className="font-display text-2xl text-[#1a1714]">Kursar</p>
+          <p className="text-sm text-[#5c564c]">Resume Scorer is a Kursar product. Uploads are scored in this session and are not stored.</p>
         </div>
       </footer>
     </div>
@@ -217,7 +225,7 @@ const STEPS = [
   {
     number: "01",
     title: "Add your resume",
-    body: "Drop a PDF, DOCX, or text file in the box, or paste the text. Kursar reads the words in the file.",
+    body: "Drop a PDF, DOCX, or text file in the box, or paste the text. Resume Scorer reads the words in the file.",
   },
   {
     number: "02",
