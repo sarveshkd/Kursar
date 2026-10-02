@@ -13,6 +13,21 @@ npm run dev
 
 Open [http://localhost:4317](http://localhost:4317).
 
+## Publish
+
+A name you own, such as `kursar.com`, is not free. What you can publish for free is a site address from the host, such as `https://your-project.vercel.app`.
+
+Resume Scorer needs a server because it reads PDF and DOCX files. GitHub Pages cannot run that. Vercel’s free Hobby plan can.
+
+1. Create a free [GitHub](https://github.com) account and a free [Vercel](https://vercel.com) account. Use “Continue with GitHub” on Vercel.
+2. Create a new public GitHub repository and push this project to it.
+3. In Vercel, choose **Add New… → Project**, import that repository, and leave the framework as Next.js.
+4. Deploy. Vercel prints a `https://something.vercel.app` link. That link is your free address. Share it.
+
+When you want a real domain later, register one at cost (often about $10 a year for `.com`) from Cloudflare Registrar or Porkbun, then in Vercel open the project → **Settings → Domains** and add it. Vercel shows the DNS records to paste at the registrar.
+
+Leave `SCORER_PROVIDER` unset in Vercel. The site then keeps using the built-in rubric and does not need an API key.
+
 To try it before you have a file, open the John Doe examples. One is a weak resume and one is a stronger rewrite of the same career.
 
 You can also paste plain text, or upload `.pdf`, `.docx`, `.txt`, or `.md`.
