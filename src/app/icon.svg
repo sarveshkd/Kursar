@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#234237"/>
-  <text x="16" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#f6f1e6">K</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#6B7C3A"/>
+  <text x="32" y="40" text-anchor="middle" font-family="Georgia, 'Palatino Linotype', Palatino, serif" font-size="26" letter-spacing="-1" fill="#F3EFE2">KS</text>
+  <rect x="18" y="48" width="28" height="2" fill="#F3EFE2"/>
 </svg>

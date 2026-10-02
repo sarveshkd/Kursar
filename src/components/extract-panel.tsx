@@ -1,10 +1,14 @@
+import { FileSearch } from "lucide-react"
 import type { ScoreReport } from "@/lib/scoring/types"
 
 export function ExtractPanel({ report }: { report: ScoreReport | null }) {
   if (!report) {
     return (
       <section className="border border-[#1a1714] bg-[#f7f3ea] p-4">
-        <h2 className="text-sm font-medium text-[#1a1714]">Extracted text</h2>
+        <h2 className="flex items-center gap-2 text-sm font-medium text-[#1a1714]">
+          <FileSearch className="size-4 text-[#6B7C3A]" aria-hidden="true" />
+          Extracted text
+        </h2>
         <p className="mt-2 text-sm leading-6 text-[#5c564c]">
           After a score, this is the text Resume Scorer read. If a heading or a bullet is missing here, it was not in the file.
         </p>
@@ -16,7 +20,10 @@ export function ExtractPanel({ report }: { report: ScoreReport | null }) {
   return (
     <section className="border border-[#1a1714] bg-[#f7f3ea] p-4">
       <div className="flex items-baseline justify-between gap-3">
-        <h2 className="text-sm font-medium text-[#1a1714]">Extracted text</h2>
+        <h2 className="flex items-center gap-2 text-sm font-medium text-[#1a1714]">
+          <FileSearch className="size-4 text-[#6B7C3A]" aria-hidden="true" />
+          Extracted text
+        </h2>
         <p className="text-xs text-[#5c564c]">{extracted.wordCount} words</p>
       </div>
       <p className="mt-1 truncate text-xs text-[#5c564c]">{extracted.filename}</p>

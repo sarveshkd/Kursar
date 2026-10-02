@@ -1,8 +1,11 @@
 "use client"
 
 import { useRef, useState } from "react"
+import { ClipboardPaste, FileCheck, FileText, FileUp, ListChecks, Upload } from "lucide-react"
 import { ExtractPanel } from "@/components/extract-panel"
 import { ScoreSheet } from "@/components/score-sheet"
+import { SiteFooter } from "@/components/site-footer"
+import { SiteHeader } from "@/components/site-header"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { MAX_UPLOAD_BYTES, UPLOAD_MESSAGES } from "@/lib/resume/errors"
@@ -66,30 +69,23 @@ export function ReviewDesk() {
 
   return (
     <div className="min-h-full bg-[#efe8d8] text-[#1a1714]">
-      <header className="border-b border-[#1a1714] bg-[#f6f1e6]">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-5 sm:px-6">
-          <div>
-            <p className="font-display text-4xl leading-none tracking-tight sm:text-5xl">Kursar</p>
-            <p className="mt-1 text-sm text-[#5c564c]">Resume Scorer</p>
-          </div>
-          <a
-            href="#how-to-use"
-            className="text-sm text-[#234237] underline decoration-[#234237]/40 underline-offset-4 hover:decoration-[#234237]"
-          >
-            How to use
-          </a>
-        </div>
-      </header>
+      <SiteHeader />
 
       <section id="how-to-use" className="border-b border-[#1a1714] bg-[#f7f3ea]">
         <div className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 md:grid-cols-3">
           <div className="md:col-span-3">
             <p className="text-[11px] font-medium tracking-[0.22em] text-[#5c564c] uppercase">A Kursar product</p>
             <h1 className="font-display mt-2 text-4xl leading-none tracking-tight text-[#1a1714]">Resume Scorer</h1>
+            <p className="mt-3 max-w-xl text-sm leading-6 text-[#3f3a33]">
+              A free resume checker. Upload a file and read the lines that are holding the score down.
+            </p>
           </div>
           {STEPS.map((step) => (
             <div key={step.number}>
-              <p className="font-display text-3xl text-[#234237]">{step.number}</p>
+              <div className="flex items-center gap-2">
+                <step.icon className="size-4 text-[#6B7C3A]" aria-hidden="true" />
+                <p className="font-display text-3xl text-[#234237]">{step.number}</p>
+              </div>
               <h2 className="mt-2 text-base font-medium text-[#1a1714]">{step.title}</h2>
               <p className="mt-2 text-sm leading-6 text-[#3f3a33]">{step.body}</p>
             </div>
@@ -127,7 +123,8 @@ export function ReviewDesk() {
                 scoreFile(event.dataTransfer.files[0])
               }}
             >
-              <span className="font-display text-2xl">Drop a file</span>
+              <Upload className="size-5 text-[#6B7C3A]" aria-hidden="true" />
+              <span className="font-display mt-2 text-2xl">Drop a file</span>
               <span className="mt-1 text-sm text-[#5c564c]">PDF, DOCX, or plain text · up to 5 MB</span>
               <input
                 ref={inputRef}
@@ -155,15 +152,25 @@ export function ReviewDesk() {
                   disabled={loading}
                   onClick={() => scoreSample(id)}
                 >
-                  <span>
-                    <span className="block text-sm">{SAMPLES[id].title}</span>
-                    <span className="block text-xs font-normal opacity-80">{SAMPLES[id].detail}</span>
+                  <span className="flex items-start gap-2">
+                    {id === "strong" ? (
+                      <FileCheck className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+                    ) : (
+                      <FileText className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+                    )}
+                    <span>
+                      <span className="block text-sm">{SAMPLES[id].title}</span>
+                      <span className="block text-xs font-normal opacity-80">{SAMPLES[id].detail}</span>
+                    </span>
                   </span>
                 </Button>
               ))}
             </div>
             <details className="mt-4 border border-[#d9d0c0]">
-              <summary className="cursor-pointer px-3 py-2 text-sm">Paste plain text instead</summary>
+              <summary className="flex cursor-pointer items-center gap-2 px-3 py-2 text-sm">
+                <ClipboardPaste className="size-4 text-[#6B7C3A]" aria-hidden="true" />
+                Paste plain text instead
+              </summary>
               <div className="space-y-2 border-t border-[#d9d0c0] p-3">
                 <Textarea
                   value={paste}
@@ -195,28 +202,7 @@ export function ReviewDesk() {
         </div>
       </main>
 
-      <footer className="border-t border-[#1a1714] bg-[#f6f1e6]">
-        <div className="mx-auto grid max-w-6xl gap-6 px-4 py-8 text-sm leading-6 text-[#3f3a33] sm:px-6 md:grid-cols-3">
-          <div>
-            <p className="font-medium text-[#1a1714]">How a score reads</p>
-            <p className="mt-2">80–100 strong. 65–79 solid. 45–64 uneven. 0–44 needs work.</p>
-          </div>
-          <div>
-            <p className="font-medium text-[#1a1714]">What you can upload</p>
-            <p className="mt-2">PDF, DOCX, or plain text, up to 5 MB. A photo or scan of a resume needs a text-based PDF.</p>
-          </div>
-          <div>
-            <p className="font-medium text-[#1a1714]">What Resume Scorer looks at</p>
-            <p className="mt-2">
-              Summary, experience, skills, education, and formatting. It quotes lines from your file. It does not compare you to one job posting.
-            </p>
-          </div>
-        </div>
-        <div className="mx-auto flex max-w-6xl flex-col gap-1 border-t border-[#d9d0c0] px-4 py-5 sm:px-6">
-          <p className="font-display text-2xl text-[#1a1714]">Kursar</p>
-          <p className="text-sm text-[#5c564c]">Resume Scorer is a Kursar product. Uploads are scored in this session and are not stored.</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }
@@ -226,16 +212,19 @@ const STEPS = [
     number: "01",
     title: "Add your resume",
     body: "Drop a PDF, DOCX, or text file in the box, or paste the text. Resume Scorer reads the words in the file.",
+    icon: FileUp,
   },
   {
     number: "02",
     title: "Or try an example first",
     body: "The John Doe examples are sample resumes, not yours. Open the weak one, then the stronger rewrite, to see how the score changes.",
+    icon: FileText,
   },
   {
     number: "03",
     title: "Read each section",
     body: "Start with the overall score. Each part quotes a line from the resume and says what to change. The extract shows exactly what was read.",
+    icon: ListChecks,
   },
 ]
 
